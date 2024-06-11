@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <center>
+    <form id="myForm">
+        <table border="2">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="number" id="age"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" id="male" name="gender" value="male"><label for="male">Male</label><input type="radio" id="female" name="gender" value="female"><label for="female">Female</label></td>
+            </tr>
+            <tr><td>Courses</td><td><select id="courses"><option value="python">Python</option><option value="java">Java</option><option value="php">PHP</option><option value="mernstack">Mern Stack</option></select></td></tr>
+            <tr><td>E mail</td><td><input type="email" id="email"></td></tr>
+            <tr><td colspan="2"><center><button type="button" id="savebutton">Save</button></center></td></tr>
+        </table>
+    </form>
+    </center>
+    <br>
+    <center>
+    <table border="2" id="userData" >
+            <tr >
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>COURSE</th>
+                <th>GENDER</th>
+                <th>EMAIL</th>
+                <th>ACTION</th>
+            </tr>
+
+    </table>
+    </center>
+
+    <script>
+        var savebutton = document.getElementById("savebutton");
+        var table = document.getElementById("userData");
+
+        savebutton.addEventListener("click", function() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var course = document.getElementById("courses").value;
+            var email = document.getElementById("email").value;
+
+            var tr = document.createElement("tr");
+            tr.innerHTML = `<td>${name}</td><td>${age}</td><td>${course}</td><td>${gender}</td><td>${email}</td><td><button>Delete</button></td>`;
+            table.appendChild(tr);
+            document.getElementById("myForm").reset();
+        });
+    </script>
+</body>
+</html>
